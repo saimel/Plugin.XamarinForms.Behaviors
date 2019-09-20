@@ -7,22 +7,22 @@ namespace Plugin.XamarinForms.Behaviors
     {
         public string Pattern { get; set; }
 
-        public static BindableProperty MatchingStyleProperty = BindableProperty.Create(
-            nameof(MatchingStyle), typeof(Style), typeof(EntryValidatorBehavior), defaultBindingMode: BindingMode.OneTime);
+        public static BindableProperty ValidValueStyleProperty = BindableProperty.Create(
+            nameof(ValidValueStyle), typeof(Style), typeof(EntryValidatorBehavior), defaultBindingMode: BindingMode.OneTime);
 
-        public Style MatchingStyle
+        public Style ValidValueStyle
         {
-            get => (Style)GetValue(MatchingStyleProperty);
-            set => SetValue(MatchingStyleProperty, value);
+            get => (Style)GetValue(ValidValueStyleProperty);
+            set => SetValue(ValidValueStyleProperty, value);
         }
 
-        public static BindableProperty NotMatchingStyleProperty = BindableProperty.Create(
-            nameof(NotMatchingStyle), typeof(Style), typeof(EntryValidatorBehavior), defaultBindingMode: BindingMode.OneTime);
+        public static BindableProperty NotValidValueStyleProperty = BindableProperty.Create(
+            nameof(NotValidValueStyle), typeof(Style), typeof(EntryValidatorBehavior), defaultBindingMode: BindingMode.OneTime);
 
-        public Style NotMatchingStyle
+        public Style NotValidValueStyle
         {
-            get => (Style)GetValue(NotMatchingStyleProperty);
-            set => SetValue(NotMatchingStyleProperty, value);
+            get => (Style)GetValue(NotValidValueStyleProperty);
+            set => SetValue(NotValidValueStyleProperty, value);
         }
 
         protected override void OnAttachedTo(Entry bindable)
@@ -45,7 +45,7 @@ namespace Plugin.XamarinForms.Behaviors
             }
 
             var entry = (sender as Entry);
-            entry.Style = Regex.IsMatch(args.NewTextValue, $@"{Pattern}") == true ? MatchingStyle : NotMatchingStyle;
+            entry.Style = Regex.IsMatch(args.NewTextValue, $@"{Pattern}") == true ? ValidValueStyle : NotValidValueStyle;
         }
     }
 }
