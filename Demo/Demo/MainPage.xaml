@@ -3,13 +3,113 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:behav="clr-namespace:Plugin.XamarinForms.Behaviors;assembly=Plugin.XamarinForms.Behaviors"
              mc:Ignorable="d"
-             x:Class="Demo.MainPage">
+             x:Class="Demo.MainPage"
+             Title="Behaviors Demo"
+             Padding="10,5">
 
-    <StackLayout>
-        
-        
-        
-    </StackLayout>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Picker Margin="5">
+                <Picker.Items>
+                    <x:String>Select movie</x:String>
+                    <x:String>Toy Story</x:String>
+                    <x:String>A Bug's Life</x:String>
+                    <x:String>Monsters Inc.</x:String>
+                    <x:String>Finding Nemo</x:String>
+                    <x:String>The Incredibles</x:String>
+                    <x:String>Cars</x:String>
+                    <x:String>Ratatoullie</x:String>
+                    <x:String>WALL-E</x:String>
+                    <x:String>Up</x:String>
+                    <x:String>Brave</x:String>
+                    <x:String>Inside Out</x:String>
+                    <x:String>The Good Dinosaur</x:String>
+                    <x:String>Coco</x:String>
+                </Picker.Items>
+                <Picker.SelectedIndex>0</Picker.SelectedIndex>
+                <Picker.Behaviors>
+                    <behav:PickerSelectedItemBehavior ValidItemStyle="{x:StaticResource validValueStyle}"
+                                                      InvalidItemStyle="{x:StaticResource invalidValueStyle}" />
+                </Picker.Behaviors>
+            </Picker>
+
+            <StackLayout Orientation="Horizontal" Padding="5">
+                <Label Text="Enable elements" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+                <Switch IsToggled="False" OnColor="Teal" x:Name="swtEnable" />
+            </StackLayout>
+            <Grid Padding="5">
+                <Button Text="SOME ACTION" TextColor="White" Grid.ColumnSpan="2" Clicked="OnBtnClicked"
+                        IsEnabled="{Binding Source={x:Reference swtEnable}, Path=IsToggled}">
+                    <Button.Behaviors>
+                        <behav:VisualElementEnableBehavior EnableStyle="{x:StaticResource btnEnableStyle}"
+                                                           DisableStyle="{x:StaticResource disableStyle}" />
+                    </Button.Behaviors>
+                </Button>
+
+                <DatePicker Date="11/11/2011" Format="MMM dd, yyyy"
+                            IsEnabled="{Binding Source={x:Reference swtEnable}, Path=IsToggled}"
+                            HorizontalOptions="FillAndExpand" Grid.Row="1">
+                    <DatePicker.Behaviors>
+                        <behav:VisualElementEnableBehavior EnableStyle="{x:StaticResource dpkEnableStyle}"
+                                                           DisableStyle="{x:StaticResource disableStyle}" />
+                    </DatePicker.Behaviors>
+                </DatePicker>
+
+                <TimePicker Time="11:11:11" Format="hh:mm:ss tt"
+                            IsEnabled="{Binding Source={x:Reference swtEnable}, Path=IsToggled}"
+                            HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1">
+                    <TimePicker.Behaviors>
+                        <behav:VisualElementEnableBehavior EnableStyle="{x:StaticResource tpkEnableStyle}"
+                                                           DisableStyle="{x:StaticResource disableStyle}" />
+                    </TimePicker.Behaviors>
+                </TimePicker>
+
+            </Grid>
+
+            <Grid Padding="5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Full Name" Style="{x:StaticResource lblCaptionStyle}" Grid.Row="0" />
+                <Entry Grid.Row="0" Grid.Column="1" Keyboard="Text" ReturnType="Next">
+                    <Entry.Behaviors>
+                        <behav:EntryFocusNextBehavior NextEntry="{Binding Source={x:Reference txtEmail}}" />
+                    </Entry.Behaviors>
+                </Entry>
+
+                <Label Text="Email" Style="{x:StaticResource lblCaptionStyle}" Grid.Row="1" />
+                <Entry Grid.Row="1" Grid.Column="1" Keyboard="Email" ReturnType="Next" x:Name="txtEmail">
+                    <Entry.Behaviors>
+                        <behav:EntryFocusNextBehavior NextEntry="{Binding txtAge}" />
+                        <behav:EntryValidatorBehavior Pattern="^(\w+((\.|\-)\w+)*)\@(\w+((\.|\-)\w+)*(\.(\w){2,3}))$"
+                                                      ValidValueStyle="{x:StaticResource validValueStyle}"
+                                                      NotValidValueStyle="{x:StaticResource invalidValueStyle}" />
+                    </Entry.Behaviors>
+                </Entry>
+
+                <Label Text="Driver Age" Style="{x:StaticResource lblCaptionStyle}" Grid.Row="2" />
+                <Entry Placeholder="Between 18 and 85" Grid.Row="2" Grid.Column="1" x:Name="txtAge">
+                    <Entry.Behaviors>
+                        <behav:EntryMinMaxBehavior MinValue="18" MaxValue="85"
+                                                   ValidValueStyle="{x:StaticResource validValueStyle}"
+                                                   NotValidValueStyle="{x:StaticResource invalidValueStyle}" />
+                    </Entry.Behaviors>
+                </Entry>
+
+                <Label Text="USA Phone" Style="{x:StaticResource lblCaptionStyle}" Grid.Row="3" Grid.Column="0" />
+                <Entry Grid.Row="3" Grid.Column="1" Keyboard="Telephone">
+                    <Entry.Behaviors>
+                        <behav:EntryMaskedBehavior Mask="(XXX) XXX-XXXX" />
+                    </Entry.Behaviors>
+                </Entry>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>

@@ -22,16 +22,29 @@ namespace Plugin.XamarinForms.Behaviors
             set => SetValue(MaxValueProperty, value);
         }
 
+        public static BindableProperty ValidValueStyleProperty = BindableProperty.Create(
+            nameof(ValidValueStyle), typeof(Style), typeof(EntryMinMaxBehavior), defaultBindingMode: BindingMode.OneTime);
+
+        public Style ValidValueStyle
+        {
+            get => (Style)GetValue(ValidValueStyleProperty);
+            set => SetValue(ValidValueStyleProperty, value);
+        }
+
+        public static BindableProperty NotValidValueStyleProperty = BindableProperty.Create(
+            nameof(NotValidValueStyle), typeof(Style), typeof(EntryMinMaxBehavior), defaultBindingMode: BindingMode.OneTime);
+
+        public Style NotValidValueStyle
+        {
+            get => (Style)GetValue(NotValidValueStyleProperty);
+            set => SetValue(NotValidValueStyleProperty, value);
+        }
+
         protected override void OnAttachedTo(Entry bindable)
         {
             base.OnAttachedTo(bindable);
             bindable.TextChanged += OnTextChanged;
             bindable.Keyboard = Keyboard.Numeric;
-
-            if (string.IsNullOrEmpty(bindable.Text) == true)
-            {
-                bindable.Text = MinValue.ToString();
-            }
         }
 
         protected override void OnDetachingFrom(Entry bindable)
@@ -46,18 +59,24 @@ namespace Plugin.XamarinForms.Behaviors
 
             if (string.IsNullOrEmpty(args.NewTextValue) == true)
             {
-                entry.Text = MinValue.ToString();
+                entry.Style = NotValidValueStyle;
+                return;
             }
-            else if (double.TryParse(args.NewTextValue, out double result) == true)
+
+            if (double.TryParse(args.NewTextValue, out double result) == true)
             {
                 if (result < MinValue || result > MaxValue)
                 {
-                    entry.Text = args.OldTextValue;
+                    entry.Style = NotValidValueStyle;
+                }
+                else
+                {
+                    entry.Style = ValidValueStyle;
                 }
             }
             else
             {
-                entry.Text = args.OldTextValue;
+                entry.Style = NotValidValueStyle;
             }
         }
     }

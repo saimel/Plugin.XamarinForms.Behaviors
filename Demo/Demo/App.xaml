@@ -15,6 +15,45 @@
             <Style x:Key="disableStyle" TargetType="View">
                 <Setter Property="BackgroundColor" Value="Silver" />
             </Style>
+
+            <Style x:Key="btnEnableStyle" TargetType="Button" BasedOn="{x:StaticResource enableStyle}">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+
+            <Style x:Key="dpkEnableStyle" TargetType="DatePicker" BasedOn="{x:StaticResource enableStyle}">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+
+            <Style x:Key="tpkEnableStyle" TargetType="TimePicker" BasedOn="{x:StaticResource enableStyle}">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            
+            <Style x:Key="validValueStyle" TargetType="View">
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+            <Style x:Key="invalidValueStyle" TargetType="View">
+                <Setter Property="BackgroundColor" Value="#F5D5D0" />
+            </Style>
+
+            <!--<Style x:Key="invalidItemStyle" TargetType="Picker">
+                <Setter Property="BackgroundColor" Value="#F5D5D0" />
+            </Style>
+
+            <Style x:Key="txtValidValueStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="DimGray" />
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>
+            <Style x:Key="txtNotValidValueStyle" TargetType="Entry">
+                <Setter Property="TextColor" Value="Salmon" />
+                <Setter Property="BackgroundColor" Value="White" />
+            </Style>-->
+
+            <Style x:Key="lblCaptionStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="DimGray" />
+                <Setter Property="FontSize" Value="Caption" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalTextAlignment" Value="End" />
+            </Style>
         </ResourceDictionary>
         
     </Application.Resources>

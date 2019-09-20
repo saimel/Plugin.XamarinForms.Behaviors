@@ -27,6 +27,7 @@ namespace Plugin.XamarinForms.Behaviors
         {
             base.OnAttachedTo(bindable);
             bindable.PropertyChanged += OnPropertyChanged;
+            bindable.Style = bindable.IsEnabled ? EnableStyle : DisableStyle;
         }
 
         protected override void OnDetachingFrom(VisualElement bindable)
