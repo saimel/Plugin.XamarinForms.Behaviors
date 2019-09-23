@@ -10,43 +10,20 @@
 
         <ResourceDictionary>
             <Style x:Key="enableStyle" TargetType="View">
-                <Setter Property="BackgroundColor" Value="Teal" />
+                <Setter Property="BackgroundColor" Value="White" />
             </Style>
             <Style x:Key="disableStyle" TargetType="View">
                 <Setter Property="BackgroundColor" Value="Silver" />
             </Style>
 
-            <Style x:Key="btnEnableStyle" TargetType="Button" BasedOn="{x:StaticResource enableStyle}">
+            <Style x:Key="btnEnableStyle" TargetType="Button">
                 <Setter Property="TextColor" Value="White" />
-            </Style>
-
-            <Style x:Key="dpkEnableStyle" TargetType="DatePicker" BasedOn="{x:StaticResource enableStyle}">
-                <Setter Property="TextColor" Value="White" />
-            </Style>
-
-            <Style x:Key="tpkEnableStyle" TargetType="TimePicker" BasedOn="{x:StaticResource enableStyle}">
-                <Setter Property="TextColor" Value="White" />
+                <Setter Property="BackgroundColor" Value="Teal" />
             </Style>
             
-            <Style x:Key="validValueStyle" TargetType="View">
-                <Setter Property="BackgroundColor" Value="White" />
-            </Style>
             <Style x:Key="invalidValueStyle" TargetType="View">
                 <Setter Property="BackgroundColor" Value="#F5D5D0" />
             </Style>
-
-            <!--<Style x:Key="invalidItemStyle" TargetType="Picker">
-                <Setter Property="BackgroundColor" Value="#F5D5D0" />
-            </Style>
-
-            <Style x:Key="txtValidValueStyle" TargetType="Entry">
-                <Setter Property="TextColor" Value="DimGray" />
-                <Setter Property="BackgroundColor" Value="White" />
-            </Style>
-            <Style x:Key="txtNotValidValueStyle" TargetType="Entry">
-                <Setter Property="TextColor" Value="Salmon" />
-                <Setter Property="BackgroundColor" Value="White" />
-            </Style>-->
 
             <Style x:Key="lblCaptionStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="DimGray" />
