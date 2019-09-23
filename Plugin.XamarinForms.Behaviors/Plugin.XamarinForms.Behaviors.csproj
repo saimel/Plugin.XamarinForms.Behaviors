@@ -10,6 +10,7 @@
     <PackageTags>Plugin; Xamarin Forms; Behaviors; Behavior</PackageTags>
     <Title>Plugin Xamarin Forms Behaviors</Title>
     <Description>Cross platform library containing a bunch of XAML behaviors for Xamarin Forms.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
