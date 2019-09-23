@@ -2,6 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackOnBuild>true</PackOnBuild>
+    <Authors>Saimel Saez saimelsaez@gmail.com</Authors>
+    <PackageLicenseUrl>https://github.com/saimel/Plugin.XamarinForms.Behaviors/blob/master/LICENSE.md</PackageLicenseUrl>
+    <Owners>Saimel Saez</Owners>
+    <PackageProjectUrl>https://github.com/saimel/Plugin.XamarinForms.Behaviors</PackageProjectUrl>
+    <PackageTags>Plugin; Xamarin Forms; Behaviors; Behavior</PackageTags>
+    <Title>Plugin Xamarin Forms Behaviors</Title>
+    <Description>Cross platform library containing a bunch of XAML behaviors for Xamarin Forms.</Description>
   </PropertyGroup>
 
   <ItemGroup>
